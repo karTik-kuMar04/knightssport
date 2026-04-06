@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+
+
+@theme inline {
+  --color-background: #FBF7F0;
+  --color-background-alt: #F5EDE0;
+  --color-foreground: #1C1917;
+  --color-card: #FFFFFF;
+  --color-accent: #C2410C;
+  --color-accent-hover: #9A3412;
+  --color-accent-soft: #FFF1E6;
+  --color-muted: #78716C;
+  --color-border: #E7E0D8;
+  --color-success: #15803D;
+  --color-danger: #DC2626;
+  --color-gold: #B45309;
+  --color-navy: #1E293B;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #D6CFC5 #FBF7F0;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Warm glass effect */
+.glass-warm {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(231, 224, 216, 0.6);
+}
+
+/* Premium card shadow */
+.card-shadow {
+  box-shadow:
+    0 1px 3px rgba(28, 25, 23, 0.04),
+    0 8px 24px rgba(28, 25, 23, 0.06),
+    0 24px 48px rgba(28, 25, 23, 0.04);
+}
+
+.card-shadow-hover {
+  box-shadow:
+    0 1px 3px rgba(28, 25, 23, 0.04),
+    0 12px 32px rgba(194, 65, 12, 0.08),
+    0 32px 64px rgba(28, 25, 23, 0.06);
+}
+
+/* Accent glow */
+.glow-accent {
+  box-shadow: 0 0 40px rgba(194, 65, 12, 0.1), 0 0 80px rgba(194, 65, 12, 0.05);
+}
+
+/* Warm gradient hero */
+.hero-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(194, 65, 12, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(180, 83, 9, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(194, 65, 12, 0.03) 0%, transparent 50%),
+    var(--color-background);
+}
+
+/* Animated gradient background for hero */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-warm-gradient {
+  background: linear-gradient(
+    135deg,
+    #FBF7F0 0%,
+    #FFF5EB 20%,
+    #FBF7F0 40%,
+    #FEF3E2 60%,
+    #FBF7F0 80%,
+    #FFF8F2 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 20s ease infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Subtle pulse for CTA */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 4px 14px rgba(194, 65, 12, 0.25); }
+  50% { box-shadow: 0 8px 28px rgba(194, 65, 12, 0.4); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+/* Fade in up */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.fade-in-up-delay-1 {
+  animation: fade-in-up 0.8s ease-out 0.15s forwards;
+  opacity: 0;
+}
+
+.fade-in-up-delay-2 {
+  animation: fade-in-up 0.8s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.fade-in-up-delay-3 {
+  animation: fade-in-up 0.8s ease-out 0.45s forwards;
+  opacity: 0;
+}
+
+.fade-in-up-delay-4 {
+  animation: fade-in-up 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+/* Decorative dot pattern */
+.dot-pattern {
+  background-image: radial-gradient(circle, #D6CFC5 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(194, 65, 12, 0.05) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Scale hover */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Smooth input focus ring */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.1) !important;
+}
+
+/* Custom selection color */
+::selection {
+  background: rgba(194, 65, 12, 0.15);
+  color: var(--color-foreground);
+}
