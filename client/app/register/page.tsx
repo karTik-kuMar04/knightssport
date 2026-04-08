@@ -5,6 +5,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import api from "@/lib/api";
 
 // Form Interface
 interface IFormInput {
@@ -47,14 +48,63 @@ function RegistrationForm() {
 
   const formValues = watch();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log("Form Submitted Successfully:", data);
-    alert("Redirecting to Razorpay Secure Checkout for ₹499...");
+  const loadScript = (src: string): Promise<boolean> => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+
+      document.body.appendChild(script);
+    });
   };
+
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    try {
+      await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+
+      // create order
+      const { data: res } = await api.post("/api/payment/create-order", {
+        firstName: data.firstName,
+        middleName: data.middleName,
+        lastName: data.lastName,
+        dob: data.dob,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+        trialDistrict: data.district,
+        role: data.role,
+      });
+
+      const options = {
+        key: "rzp_test_SaslEWPaDx419S",
+        amount: res.order.amount,
+        currency: "INR",
+        order_id: res.order.id,
+
+        handler: async function (response: any) {
+          await api.post("/api/payment/verify", {
+            registrationId: res.registrationId,
+            ...response,
+          });
+
+          alert("Payment successful 🎉");
+        },
+      };
+
+      const rzp = new (window as any).Razorpay(options);
+      rzp.open();
+
+    } catch (err: any) {
+      alert(err.response?.data?.message || "Error");
+    }
+  };
+
+
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
-      {/* LEFT COLUMN: THE FORM */}
       <div className="col-span-1 lg:col-span-7">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-16">
           
