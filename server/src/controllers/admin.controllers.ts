@@ -3,6 +3,7 @@ import Admin from "../models/user.model";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import Registration from "../models/RegistrationForum.model";
 
 dotenv.config();
 
@@ -40,6 +41,18 @@ export const loginAdmin = async (req: Request, res: Response) => {
         res.status(500).json({ message: "Server error", error });
     }
 };
+
+
+export const getAllRegistrations = async (req: Request, res: Response) => {
+    try {
+        const registrations = await Registration.find().sort({ createdAt: -1 });
+        res.json(registrations);
+    } catch (error) {
+        console.error("GET REGISTRATIONS ERROR:", error);
+        res.status(500).json({ message: "Server error", error });
+    }
+}
+
 
 // async function createAdmin() {
 //     const hashedPassword = await bcrypt.hash("admin123", 10);
