@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import router from "./route/route";
+import adminRouter from "./route/admin.route";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -19,5 +20,6 @@ app.get("/", (req, res) => {
     });
 });
 app.use("/api/payment", router);
+app.use("/api/admin", adminRouter);
 
 export default app;

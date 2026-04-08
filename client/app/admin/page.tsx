@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 // --- MOCK DATA ---
@@ -48,13 +49,42 @@ export default function AdminPanel() {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
 
-  // Filter Logic
+  const router = useRouter();
+  const [isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+
+    if (!token) {
+      router.push("/admin/login");
+    } else {
+      setIsAuth(true);
+    }
+  }, []);
+
+
   const filteredPlayers = MOCK_PLAYERS.filter(player => {
     const matchesSearch = player.name.toLowerCase().includes(searchQuery.toLowerCase()) || player.phone.includes(searchQuery);
     const matchesCategory = categoryFilter === "all" || player.category === categoryFilter;
     return matchesSearch && matchesCategory;
   });
 
+  if (!isAuth) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-stone-50 px-4 selection:bg-stone-900 selection:text-stone-50 font-sans">
+        <div className="flex flex-col items-center animate-pulse duration-1000">
+          <p className="text-[10px] font-bold text-stone-500 uppercase tracking-[0.3em] mb-4 text-center">
+            Secure Gateway
+          </p>
+          <h2 className="text-2xl md:text-3xl font-black text-stone-900 uppercase tracking-widest text-center">
+            Authenticating
+          </h2>
+          {/* Minimalist Loading Bar Line */}
+          <div className="w-12 h-0.5 bg-stone-900 mt-6" />
+        </div>
+      </div>
+    );
+  } 
   return (
     <div className="min-h-screen bg-stone-50 flex flex-col md:flex-row selection:bg-stone-900 selection:text-stone-50 text-stone-900 font-sans tracking-tight">
       
