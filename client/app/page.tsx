@@ -8,10 +8,21 @@ export default function Home() {
     <>
       <main className="flex-1 bg-background selection:bg-accent selection:text-white">
         {/* ===== PREMIUM HERO SECTION ===== */}
-        <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 pt-20 border-b border-border">
+        <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 pt-16 md:pt-20 border-b border-border">
+  
+          {/* ===== TOP LEFT ICON ===== */}
+          <div className="absolute top-6 left-6 md:top-10 md:left-10 z-20">
+            <img 
+              src="./knights-sports-icon-removebg.png" 
+              alt="League Icon" 
+              className="h-16 md:h-25 w-auto object-contain drop-shadow-md" 
+            />
+          </div>
+
           <div className="absolute inset-0 bg-linear-to-b from-background via-background to-accent-soft/10 pointer-events-none" />
           
-          <div className="relative z-10 space-y-6 max-w-4xl mx-auto">
+          <div className="relative z-10 space-y-6 max-w-4xl mx-auto flex flex-col items-center">
+            
             <p className="text-[10px] md:text-xs font-bold text-muted uppercase tracking-[0.3em]">
               Official Selection &middot; 2026 Season
             </p>
@@ -28,12 +39,12 @@ export default function Home() {
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link 
                 href="#form-divisions" 
-                className="w-full sm:w-auto px-10 py-4 bg-black border border-border text-white font-bold text-sm uppercase tracking-widest hover:scale-110 transition-colors outline-none"
+                className="w-full sm:w-auto px-10 py-4 bg-black border border-border text-white font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform outline-none"
               >
                 Fill Form
               </Link>
               <Link 
-                href="#league-details" 
+                href="#blueprint" 
                 className="w-full sm:w-auto px-10 py-4 bg-transparent border border-border text-foreground font-bold text-sm uppercase tracking-widest hover:bg-accent-soft transition-colors"
               >
                 Read The Prospectus
@@ -42,8 +53,43 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ===== OFFICIAL MEDIA (JUST BELOW HERO) ===== */}
+        <section className="py-20 lg:py-32 bg-background border-b border-border overflow-hidden">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              
+              {/* Poster Image */}
+              <div className="flex justify-center lg:justify-end">
+                <img 
+                  src="knights-sports.jpg" 
+                  alt="Official GT Road League Poster" 
+                  className="w-full max-w-md h-auto rounded-xl shadow-2xl border border-border/50" 
+                />
+              </div>
+
+              {/* Logo / Badge Image */}
+              <div className="flex flex-col items-center lg:items-start justify-center space-y-10">
+                <img 
+                  src="knights-sports-icon.jpg" 
+                  alt="GT Road League Emblem" 
+                  className="w-full max-w-sm h-auto drop-shadow-xl" 
+                />
+                <div className="text-center lg:text-left max-w-md">
+                  <h3 className="text-2xl font-black text-foreground uppercase tracking-tight mb-4 border-l-4 border-accent pl-4">
+                    Ab Hai Local Ki Baari
+                  </h3>
+                  <p className="text-sm text-muted leading-relaxed font-medium">
+                    Powered by Knights Sports. Register now to claim your spot in the most prestigious cricket league across the GT Road districts. Secure your kit, prove your worth, and rule the pitch.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* ===== THE NUMBERS (STATS WIDGET) ===== */}
-        <section id="league-details" className="py-24 bg-background">
+        <section id="blueprint" className="py-24 bg-background">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 md:flex md:justify-between md:items-end border-b border-border pb-8">
               <div>
@@ -262,7 +308,7 @@ export default function Home() {
             </p>
             <div className="mt-12">
               <Link 
-                href="#registration-divisions" 
+                href="#form-divisions" 
                 className="inline-block border-b-2 border-foreground pb-1 text-sm font-bold text-foreground uppercase tracking-widest hover:text-accent hover:border-accent transition-colors"
               >
                 Secure Your Trial Slot

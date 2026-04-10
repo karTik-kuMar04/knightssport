@@ -16,7 +16,11 @@ export const metadata: Metadata = {
   title: "Knights Sports | Premium Cricket Tournament",
   description:
     "Defy the Limits, Rule the Pitch. Join the most electrifying cricket tournament. Register your team now and compete for glory.",
-  keywords: ["cricket", "tournament", "antigravity", "sports", "competition"],
+  keywords: ["cricket", "tournament", "sports", "competition"],
+  icons: {
+    icon: '/knights-sports-icon-removebg.png', 
+    apple: '/knights-sports-icon-removebg-icon.png', // for iOS home screens
+  },
 };
 
 export default function RootLayout({
