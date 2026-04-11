@@ -37,11 +37,15 @@ export default function Footer() {
             <div className="text-sm text-background/80 leading-relaxed font-medium space-y-5">
               <div>
                 <p className="text-[10px] text-background/50 uppercase tracking-widest mb-1">Primary Dispatch</p>
-                <p className="text-background font-bold tracking-widest">+91 89305 87292</p>
+                <a 
+                  href="tel:+918930587292"
+                  className="text-background font-bold tracking-widest">+91 89305 87292</a>
               </div>
               <div>
                 <p className="text-[10px] text-background/50 uppercase tracking-widest mb-1">Electronic Mail</p>
-                <p className="text-background font-bold">director@knightssport.in</p>
+                <a 
+                  href="mailto:knightssports8930@gmail.com"
+                  className="text-background font-bold">knightssports8930@gmail.com</a>
               </div>
             </div>
           </div>
