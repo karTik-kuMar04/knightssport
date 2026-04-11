@@ -35,7 +35,7 @@ export default function RegistrationDivisions() {
                 </div>
                 <div>
                   <p className="text-[10px] text-muted font-bold uppercase tracking-[0.2em] mb-1">Deadline</p>
-                  <p className="text-sm font-medium text-foreground">Valid till May 15, 2026</p>
+                  <p className="text-sm font-medium text-foreground">Valid till May 10, 2026</p>
                 </div>
               </div>
             </div>
@@ -64,7 +64,7 @@ export default function RegistrationDivisions() {
                 </div>
                 <div>
                   <p className="text-[10px] text-muted font-bold uppercase tracking-[0.2em] mb-1">Deadline</p>
-                  <p className="text-sm font-medium text-foreground">Valid till May 15, 2026</p>
+                  <p className="text-sm font-medium text-foreground">Valid till May 10, 2026</p>
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@ export default function RegistrationDivisions() {
                 </div>
                 <div>
                   <p className="text-[10px] text-muted font-bold uppercase tracking-[0.2em] mb-1">Deadline</p>
-                  <p className="text-sm font-medium text-foreground">Valid till May 15, 2026</p>
+                  <p className="text-sm font-medium text-foreground">Valid till May 10, 2026</p>
                 </div>
               </div>
             </div>
